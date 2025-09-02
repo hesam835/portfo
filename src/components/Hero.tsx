@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
       <div className="container relative z-10 text-center">
         <motion.div initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text">توسعه‌دهنده وب</span>
+            
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
             طراحی و توسعه وب‌سایت‌های حرفه‌ای با تجربه کاربری بهینه، امنیت بالا و تکنولوژی‌های مدرن
