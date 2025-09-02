@@ -11,7 +11,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-black">
+    <section id="contact" className="min-h-screen py-20 bg-black">
       <div className="container">
         <motion.div
           ref={ref}

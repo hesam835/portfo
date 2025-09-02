@@ -20,9 +20,29 @@ const Navbar: React.FC = () => {
   ];
 
   const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    // Close mobile menu immediately
     setIsOpen(false);
+    
+    // Simple and reliable scrolling for mobile
+    setTimeout(() => {
+      const el = document.querySelector(href) as HTMLElement;
+      if (el) {
+        // Get the element's offset from the top of the document
+        const elementTop = el.offsetTop;
+        const navbarHeight = 80; // Height of fixed navbar
+        
+        // Scroll to element with offset
+        window.scrollTo({
+          top: elementTop - navbarHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollTo(href);
   };
 
   return (
@@ -40,8 +60,8 @@ const Navbar: React.FC = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                onClick={(e) => { e.preventDefault(); scrollTo(item.href); }}
-                className="text-gray-300 hover:text-white transition-colors"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
@@ -52,15 +72,24 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="md:hidden">
-            <motion.button whileTap={{ scale: 0.96 }} onClick={() => setIsOpen(v => !v)} className="text-white p-2">
-              <span className="text-2xl" aria-label="menu">{isOpen ? '✖️' : '☰'}</span>
+            <motion.button 
+              whileTap={{ scale: 0.96 }} 
+              onClick={() => setIsOpen(v => !v)} 
+              className="text-white p-2"
+              aria-label="Toggle menu"
+            >
+              <span className="text-2xl">{isOpen ? '✖️' : '☰'}</span>
             </motion.button>
           </div>
         </div>
 
         <motion.div
           initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
+          animate={{ 
+            opacity: isOpen ? 1 : 0, 
+            height: isOpen ? 'auto' : 0 
+          }}
+          transition={{ duration: 0.3 }}
           className="md:hidden overflow-hidden bg-black/90 backdrop-blur-md rounded-b-2xl"
         >
           <div className="py-4 space-y-2">
@@ -68,8 +97,8 @@ const Navbar: React.FC = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                onClick={(e) => { e.preventDefault(); scrollTo(item.href); }}
-                className="block px-4 py-2 text-gray-300 hover:text-white transition-colors"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-200 cursor-pointer"
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08 }}
