@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
               className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              تماس با من
+              تماس با ما
             </motion.button>
           </div>
         </motion.div>
