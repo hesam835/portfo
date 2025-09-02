@@ -6,9 +6,27 @@ const Projects: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const projects = [
-    { id: 1, title: 'فروشگاه آنلاین', description: 'فروشگاه کامل با پرداخت آنلاین', image: '🛒' },
-    { id: 2, title: 'مدیریت پروژه', description: 'سیستم مدیریت پروژه با گزارش‌گیری', image: '📊' },
-    { id: 3, title: 'سایت خبری', description: 'پورتال خبری با SEO بالا', image: '📰' },
+    { 
+      id: 1, 
+      title: 'آیزا - مانیتورینگ وب‌سایت', 
+      description: 'سرویس مانیتورینگ و امنیت وب‌سایت با پایش لحظه‌ای از 177 نقطه در 30 استان ایران و 25 کشور جهان', 
+      image: '🛡️',
+      link: 'https://ayyza.com/'
+    },
+    { 
+      id: 2, 
+      title: 'استیناس - هوش مصنوعی فارسی', 
+      description: 'شرکت پیشرو در زمینه هوش مصنوعی برای زبان فارسی با تخصص در پردازش سیگنال و یادگیری ماشین', 
+      image: '🤖',
+      link: 'https://stinas.ir/'
+    },
+    { 
+      id: 3, 
+      title: 'رگال - فروشگاه فرش', 
+      description: 'سایت فروشگاه فرش با طراحی مدرن و تجربه کاربری بهینه', 
+      image: '🏠'
+    },
+
   ];
 
   return (
@@ -25,7 +43,17 @@ const Projects: React.FC = () => {
               <div className="text-6xl text-center mb-4 group-hover:scale-110 transition-transform">{p.image}</div>
               <div>
                 <h3 className="text-xl font-semibold mb-1 text-white">{p.title}</h3>
-                <p className="text-gray-400 text-sm">{p.description}</p>
+                <p className="text-gray-400 text-sm mb-3">{p.description}</p>
+                {p.link && (
+                  <a 
+                    href={p.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm transition-colors"
+                  >
+                    مشاهده سایت
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

@@ -6,9 +6,9 @@ const About: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const team = [
-    { name: 'حسام شادمهری', role: 'Backend Developer', skills: ['Django', 'Django REST Framework', 'FastAPI', 'Docker'], avatar: '💻' },
     { name: 'محمدرضا کلهر', role: 'Backend Developer', skills: ['Django', 'Django REST Framework', 'FastAPI', 'Docker'], avatar: '💻' },
     { name: 'مصطفی مشعشعی', role: 'Full‑stack Developer', skills: ['React', 'Django', 'Django REST Framework', 'FastAPI', 'Docker'], avatar: '💻' },
+    { name: 'حسام شادمهری', role: 'Backend Developer', skills: ['Django', 'Django REST Framework', 'FastAPI', 'Docker'], avatar: '💻' },
   ];
 
   return (
